@@ -37,7 +37,7 @@ ensure_docker_exists() (
 		software-properties-common \
 		;
 
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
+	curl -kfsSL https://download.docker.com/linux/ubuntu/gpg |
 		sudo apt-key add -
 
 	local repo
@@ -60,7 +60,7 @@ ensure_docker-compose_exists() (
 	fi
 
 	# from https://docs.docker.com/compose/install/
-	sudo curl -fsSL \
+	sudo curl -kfsSL \
 		"https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" \
 		-o /usr/local/bin/docker-compose
 

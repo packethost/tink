@@ -33,6 +33,7 @@ require (
 	github.com/stormcat24/protodep v0.0.0-20200505140716-b02c9ba62816
 	github.com/stretchr/testify v1.6.1
 	go.mongodb.org/mongo-driver v1.1.2 // indirect
+	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
 	golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e // indirect
 	golang.org/x/sys v0.0.0-20200331124033-c3d80250170d // indirect
 	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013

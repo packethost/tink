@@ -34,8 +34,9 @@ func (w *Worker) createContainer(ctx context.Context, cmd []string, wfID string,
 
 	wfDir := filepath.Join(dataDir, wfID)
 	hostConfig := &container.HostConfig{
-		Privileged: true,
-		Binds:      []string{wfDir + ":/workflow"},
+		Privileged:  true,
+		Binds:       []string{wfDir + ":/workflow"},
+		NetworkMode: "host",
 	}
 	hostConfig.Binds = append(hostConfig.Binds, action.GetVolumes()...)
 	w.logger.With("command", cmd).Info("creating container")

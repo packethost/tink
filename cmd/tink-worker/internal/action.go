@@ -7,6 +7,7 @@ import (
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/mount"
 	"github.com/docker/docker/client"
 	"github.com/packethost/pkg/log"
 	"github.com/pkg/errors"
@@ -36,6 +37,12 @@ func (w *Worker) createContainer(ctx context.Context, cmd []string, wfID string,
 	hostConfig := &container.HostConfig{
 		Privileged: true,
 		Binds:      []string{wfDir + ":/workflow"},
+		Mounts: []mount.Mount{
+			{
+				Type:   "bind",
+				Target: "/sysrq",
+				Source: "/proc/sysrq-trigger",
+			}},
 	}
 	hostConfig.Binds = append(hostConfig.Binds, action.GetVolumes()...)
 	w.logger.With("command", cmd).Info("creating container")
